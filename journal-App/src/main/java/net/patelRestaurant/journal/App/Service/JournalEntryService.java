@@ -2,15 +2,12 @@ package net.patelRestaurant.journal.App.Service;
 
 import net.patelRestaurant.journal.App.Repository.JurnalEntryRepo;
 import net.patelRestaurant.journal.App.entity.JournalEntry;
+import net.patelRestaurant.journal.App.entity.User;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,8 +17,15 @@ public class JournalEntryService {
             @Autowired
             private JurnalEntryRepo journalEntryRepo;
 
-            public void saveEntry(JournalEntry journalEntry){
-                journalEntryRepo.save(journalEntry);
+            @Autowired
+            private UserEntryService userEntryService;
+
+            public void saveEntry(JournalEntry journalEntry, String userName){
+                User user = userEntryService.findByUserName(userName);
+                journalEntry.setDate(LocalDateTime.now());
+                JournalEntry saved = journalEntryRepo.save(journalEntry);
+                user.getJournalEntryList().add(saved);
+                userEntryService.saveEntry(user);
             }
             public List<JournalEntry> getAll(){
                 return journalEntryRepo.findAll();
@@ -29,7 +33,10 @@ public class JournalEntryService {
             public Optional<JournalEntry> findById(ObjectId id){
                 return journalEntryRepo.findById(id);
             }
-            public void deleteById(ObjectId id){
+            public void deleteById(ObjectId id, String userName){
+                User user = userEntryService.findByUserName(userName);
+                user.getJournalEntryList().removeIf(x -> x.getId().equals(id));
+                userEntryService.saveEntry(user);
                  journalEntryRepo.deleteById(id);
             }
 
