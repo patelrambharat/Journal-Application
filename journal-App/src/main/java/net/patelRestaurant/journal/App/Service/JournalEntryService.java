@@ -6,6 +6,7 @@ import net.patelRestaurant.journal.App.entity.User;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,13 +21,21 @@ public class JournalEntryService {
             @Autowired
             private UserEntryService userEntryService;
 
+            @Transactional
             public void saveEntry(JournalEntry journalEntry, String userName){
-                User user = userEntryService.findByUserName(userName);
-                journalEntry.setDate(LocalDateTime.now());
-                JournalEntry saved = journalEntryRepo.save(journalEntry);
-                user.getJournalEntryList().add(saved);
+                try{
+                    User user = userEntryService.findByUserName(userName);
+                    journalEntry.setDate(LocalDateTime.now());
+                    JournalEntry saved = journalEntryRepo.save(journalEntry);
+                    user.getJournalEntryList().add(saved);
+                    user.setUserName(null);   //ye line nhi chlegi
+                    userEntryService.saveEntry(user);
+                }
+                catch (Exception e){
+                    System.out.println(e);
+                    throw  new RuntimeException("An error occured while saving the entry", e);
+                }
 
-                userEntryService.saveEntry(user);
             }
 
             public void saveEntry(JournalEntry journalEntry){
