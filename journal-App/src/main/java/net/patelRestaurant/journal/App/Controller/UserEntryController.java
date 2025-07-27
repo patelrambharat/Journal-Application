@@ -22,7 +22,7 @@ public class UserEntryController {
     }
     @PostMapping
     public void createUser(@RequestBody User user){
-        userEntryService.saveEntry(user);
+        userEntryService.saveNewUser(user);
     }
     @PutMapping("/{userName}")
     public ResponseEntity<?> updateUser(@RequestBody User user , @PathVariable String userName){
