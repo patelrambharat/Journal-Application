@@ -28,6 +28,11 @@ public class UserEntryService {
         user.setRoles(Arrays.asList("USER"));
         userEntryRepo.save(user);
     }
+    public void saveAdmin(User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRoles(Arrays.asList("USER", "ADMIN"));
+        userEntryRepo.save(user);
+    }
     public List<User> getAll(){
         return userEntryRepo.findAll();
     }
