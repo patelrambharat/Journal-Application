@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.test.context.ActiveProfiles;
 
 import javax.management.relation.Role;
 
@@ -23,6 +24,7 @@ import java.util.Collections;
 
 
 
+@ActiveProfiles("dev")
 public class UserDetailsServiceImplTests {
 
     @InjectMocks

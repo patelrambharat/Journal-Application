@@ -10,26 +10,28 @@ import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import static org.bson.assertions.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
+@ActiveProfiles("dev")
 public class UserServiceTests {
     @Autowired
     private UserEntryRepo userEntryRepo;
 
     @Autowired
     private UserEntryService userEntryService;
-    @Disabled
+
     @ParameterizedTest
     @ArgumentsSource(UserArgumentsProvider.class)
     public void testSaveNewUser(User user) {
         assertTrue(userEntryService.saveNewUser(user));
     }
 
-    @Disabled
+
     @ParameterizedTest
         @CsvSource({
                 "1, 1, 2",
