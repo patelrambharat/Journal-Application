@@ -1,15 +1,16 @@
 spring:
-  profiles:
-    active: dev
-  application:
-    name: journal-App
+  mongodb:
+    uri: mongodb+srv://patelmmmut12497:pt80sXmdVxWmG4NN@cluster0.dmalhjx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&tls=true
+    database: journaldb
+    auto-index-creation : true
 
-  data:
-    mongodb:
-      uri: mongodb+srv://patelmmmut12497:pt80sXmdVxWmG4NN@cluster0.dmalhjx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-      database: journaldb
-      auto-index-creation: true
 server:
   port: 8080
   servlet:
     context-path: /journal
+logging:
+  level:
+    root: INFO
+
+
+

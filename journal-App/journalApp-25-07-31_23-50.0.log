@@ -1,8 +1,0 @@
-25-07-31 23:50:00.509 [main] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider 
-25-07-31 23:50:00.515 [main] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR 
-25-07-31 23:50:03.704 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"] 
-25-07-31 23:50:03.737 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/journal' 
-25-07-31 23:50:03.766 [main] INFO  n.p.journal.App.JournalApplication - Started JournalApplication in 12.399 seconds (process running for 13.766) 
-25-07-31 23:50:57.920 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[.[localhost].[/journal] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
-25-07-31 23:50:57.921 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
-25-07-31 23:50:57.922 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms 
