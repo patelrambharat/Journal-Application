@@ -1,0 +1,16 @@
+[33m4825c1a[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m Added Logging console and file
+[33m329e99f[m Create README.md
+[33m773440f[m Spring Boot Profiles
+[33mf5dfa13[m Added Mockito
+[33m18d1d39[m Added Junit Test Cases
+[33m28f6eb9[m Added role based Authorization
+[33m1f8a1a5[m Added Authentication to journal Endpoints
+[33mb626214[m update code for authentication in user entity
+[33mdb5b30b[m update code for spring security on create user
+[33m341fe82[m Updated Transaction
+[33m22fd635[m mongoDB Relationship
+[33ma084266[m updated journal Entry By Id
+[33m146de7e[m add user entity
+[33m6fe57b6[m add mongodb .....
+[33m8466331[m contoller part is done.....
+[33m51d4218[m journal application init
