@@ -1,6 +1,7 @@
 package net.patelRestaurant.journal.App.Controller;
 
 import net.patelRestaurant.journal.App.Service.UserEntryService;
+import net.patelRestaurant.journal.App.cache.AppCache;
 import net.patelRestaurant.journal.App.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,9 @@ public class AdminController {
     @Autowired
     private UserEntryService userService;
 
+    @Autowired
+    private AppCache appCache;
+
     @GetMapping("/all-users")
     public ResponseEntity<?> getAllUsers() {
         List<User> all = userService.getAll();
@@ -27,5 +31,10 @@ public class AdminController {
     @PostMapping("/create-admin-user")
     public void createUser(@RequestBody User user) {
         userService.saveAdmin(user);
+    }
+
+    @GetMapping("clear-app-cache")
+    public void clearAppCache(){
+        appCache.init();
     }
 }
