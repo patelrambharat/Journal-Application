@@ -1,4 +1,8 @@
 spring:
+  redis:
+    data:
+      host: localhost
+      port: 6379
   data:
     mongodb:
       uri: mongodb+srv://patelmmmut12497:pt80sXmdVxWmG4NN@cluster0.dmalhjx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&tls=true
@@ -24,4 +28,4 @@ server:
 
 weather:
   api:
-    key: weather_api_key
+    key:
